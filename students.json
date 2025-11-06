@@ -1,0 +1,24 @@
+{
+  "students": {
+    "AUJ230101": {
+      "name": "SANJAY KUMAR",
+      "roll": "AUJ230101"
+    },
+    "AUJ230102": {
+      "name": "RIYA SINGH",
+      "roll": "AUJ230102"
+    },
+    "AUJ230103": {
+      "name": "PRADEEP KUMAR",
+      "roll": "AUJ230103"
+    },
+    "AUJ230104": {
+      "name": "AJAY KUMAR",
+      "roll": "AUJ230104"
+    },
+    "AUJ230105": {
+      "name": "SHIVANSHU SINGH",
+      "roll": "AUJ230105"
+    }
+  }
+}

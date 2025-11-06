@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fresher Party Guidelines</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" />
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body {
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #00f0ff, #00ff85);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+    .rules-container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 700px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+      animation: fadeIn 1s ease-in;
+    }
+    h2 {
+      margin-top: 1.5rem;
+      color: #00ffb3;
+      font-weight: 600;
+      border-left: 4px solid #00f0ff;
+      padding-left: 10px;
+    }
+    ul {
+      margin-top: 0.5rem;
+      list-style: none;
+    }
+    ul li {
+      margin: 8px 0;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+    ul li::before {
+      content: "★";
+      position: absolute;
+      left: 0;
+      color: #00ffb3;
+    }
+    .btn-container {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    a.btn {
+      display: inline-block;
+      background: linear-gradient(45deg, #00f0ff, #00ff85);
+      color: #000;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+    }
+    a.btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00f0ff;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #bbb;
+      text-align: center;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Fresher Party Rules & Dress Code</h1>
+
+  <div class="rules-container">
+    <h2>🎉 General Guidelines</h2>
+    <ul>
+      <li>All attendees must carry their college ID cards.</li>
+      <li>Entry is only allowed through valid QR verification.</li>
+      <li>Respect all volunteers, coordinators, and staff members.</li>
+      <li>Any form of misconduct or damage to property will lead to disqualification.</li>
+      <li>Photography and videography are allowed only in designated areas.</li>
+    </ul>
+
+    <h2>👗 Dress Code & Model Walk</h2>
+    <ul>
+      <li>Dress smartly! Choose formal or theme-based attire (as informed by seniors).</li>
+      <li>Participants in the **Fashion/Model Walk** must register separately.</li>
+      <li>Male Participants: Formal suits or traditional wear preferred.</li>
+      <li>Female Participants: Saree, gown, or traditional outfit encouraged.</li>
+      <li>Props are allowed (with approval) — no sharp or hazardous items.</li>
+      <li>Maintain grace and confidence during your walk; no inappropriate moves.</li>
+    </ul>
+
+    <h2>🎶 Event Conduct</h2>
+    <ul>
+      <li>Be on time — gates close 15 minutes before the event starts.</li>
+      <li>Respect performers and don't interrupt ongoing programs.</li>
+      <li>Follow event schedule displayed at the venue or announced by MC.</li>
+      <li>All decisions by judges or coordinators will be final.</li>
+    </ul>
+
+    <div class="btn-container">
+      <a href="index.html" class="btn">Go to Register Page</a>
+    </div>
+  </div>
+
+  <footer>© 2025 Fresher Party Committee | Designed by CS & IT</footer>
+</body>
+</html>

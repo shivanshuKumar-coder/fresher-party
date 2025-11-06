@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fresher Party Entry System - Scanner</title>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+    <link rel="stylesheet" href="scan.css" />
+  </head>
+  <body>
+    <h1>Fresher Party Scanner</h1>
+
+
+    <!-- login in by passworrd -->
+     <div id="pin-container">
+        <h2>Enter the password :</h2> 
+        <input type="password" id="pass-input" placeholder="Enter PIN">
+      <button id="pin-submit">Submit</button>
+      <p id="pinError" style="color: #ff6666; margin-top: 10px;"></p>
+     </div>
+    
+
+    <!-- QR reading part here  -->
+    <div class="wrap-reader" style="display: none;">
+      <div id="reader"></div>
+    </div>
+
+    <div id="result"></div>
+
+    <button id="scanNextBtn" style="display:none;">Scan Again</button>
+
+    <script src="scan.js"></script>
+  </body>
+</html>

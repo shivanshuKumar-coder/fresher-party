@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(135deg, #f0f4ff, #f9f9fb);
+  /* color: #222; */
+  margin: 0;
+}
+
+/* Card/Form  */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(128, 128, 128, 0.361);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(30, 30, 50, 0.08);
+  max-width: 420px;
+  margin: 30px auto 16px auto;
+  padding: 24px 24px 18px 24px;
+  z-index: 1000;
+}
+
+/* Headings */
+.card h1 {
+  margin: 2px 0 2px;
+  font-size: 20px;
+  text-align: center;
+}
+
+label{
+  padding: 0.3rem;
+}
+
+/* Input Styling */
+input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px 16px 8px 16px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+input::placeholder {
+  color: rgb(234, 236, 238);
+}
+
+#studentRoll {
+  text-transform: uppercase;
+}
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.btn-wrapper button {
+  padding: 10px 18px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #4caf50;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+.btn-wrapper button:hover {
+  background: #388e3c;
+}
+
+.result {
+  display: none;
+   background-color: rgba(255, 255, 255, 0.864);
+  color: black;
+  padding: 16px 16px 8px 16px;
+  font-family: monospace;
+  border-radius: 12px;
+  text-align: center;
+}
+
+
+.loader {
+  display: none;
+  margin: 15px auto;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* qr stylingg */
+
+.qrcode {
+  display: none;
+  width: fit-content;
+  border:3px solid rgb(239, 234, 234);
+  justify-content: center;
+  margin: 12px auto;
+}
+/* download button  */
+.download-wrap-btn{
+  /* margin: 0 auto; */
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+}
+#downloadQR {
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #00f0ff, #00ff85);
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  letter-spacing: 0.5px;
+}
+#downloadQR:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00f0ff;
+}
+
+
+.alert-box {
+  visibility: hidden;
+  min-width: 300px;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.5s, bottom 0.5s;
+}
+
+.alert-box.show {
+  visibility: visible;
+  opacity: 1;
+  bottom: 60px;
+}
+
+.note {
+  font-size: 12px;
+  color: cyan;
+  margin-top: 10px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.back-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+/* Hide/show logic */
+.form1 {
+  display: none;
+}
+.display-form1 {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* here i remove the absollute position removes for flexibility */
+  position: static;
+  width: 100%;
+  /* min-height: 100vh; */
+  box-sizing: border-box;
+}
+
+.display-form1 h1 {
+  color: azure;
+}
+
+@media (max-width: 600px) {
+  .card {
+    max-width: 97vw;
+    padding: 12px 6px 12px 6px;
+  }
+  h1 {
+    font-size: 16px;
+  }
+  .display-form1 {
+    min-height: unset;
+    flex-direction: column;
+    left: 0;
+  }
+}
+
+

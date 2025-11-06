@@ -1,0 +1,896 @@
+{
+  "students": {
+     "AUJ230105": {
+      "name": "SHIVANSHU SINGH",
+      "roll": "AUJ250105"
+    },
+    "AUJ250123": {
+      "name": "ARUN  KUMAR",
+      "roll": "AUJ250123"
+    },
+    "AUJ250126": {
+      "name": "RAHUL KUMAR CHOUBEY",
+      "roll": "AUJ250126"
+    },
+    "AUJ250153": {
+      "name": "ASHISH  KUMAR",
+      "roll": "AUJ250153"
+    },
+    "AUJ250167": {
+      "name": "YASHKIRAT  SINGH",
+      "roll": "AUJ250167"
+    },
+    "AUJ250191": {
+      "name": "RAVINA  KUMARI",
+      "roll": "AUJ250191"
+    },
+    "AUJ250208": {
+      "name": "RAHUL  KUMAR",
+      "roll": "AUJ250208"
+    },
+    "AUJ250232": {
+      "name": "MD SHAMI ALI",
+      "roll": "AUJ250232"
+    },
+    "AUJ250235": {
+      "name": "ADITYA KUMAR SHARMA",
+      "roll": "AUJ250235"
+    },
+    "AUJ250238": {
+      "name": "LAKKI  KUMAR",
+      "roll": "AUJ250238"
+    },
+    "AUJ250280": {
+      "name": "PIYUSH  KUMAR",
+      "roll": "AUJ250280"
+    },
+    "AUJ250286": {
+      "name": "ROUSHAN  KUMAR",
+      "roll": "AUJ250286"
+    },
+    "AUJ250305": {
+      "name": "CHHOTI  SHARMA",
+      "roll": "AUJ250305"
+    },
+    "AUJ250306": {
+      "name": "VISHAL  SHEKHAR",
+      "roll": "AUJ250306"
+    },
+    "AUJ250312": {
+      "name": "MD SALMAN RAZA",
+      "roll": "AUJ250312"
+    },
+    "AUJ250315": {
+      "name": "AJAY  MAHTO",
+      "roll": "AUJ250315"
+    },
+    "AUJ250329": {
+      "name": "CHANDAN KUMAR MANDAL",
+      "roll": "AUJ250329"
+    },
+    "AUJ250343": {
+      "name": "ALOK  PRIYADARSHI",
+      "roll": "AUJ250343"
+    },
+    "AUJ250354": {
+      "name": "HARSH  KUMAR",
+      "roll": "AUJ250354"
+    },
+    "AUJ250359": {
+      "name": "SUMAN KUMAR TARWAY",
+      "roll": "AUJ250359"
+    },
+    "AUJ250366": {
+      "name": "NIRAJ  KUMAR",
+      "roll": "AUJ250366"
+    },
+    "AUJ250367": {
+      "name": "ASHOK  KUMAR",
+      "roll": "AUJ250367"
+    },
+    "AUJ250376": {
+      "name": "MD YASIR ANSARI",
+      "roll": "AUJ250376"
+    },
+    "AUJ250394": {
+      "name": "DEEPA  BHARTI",
+      "roll": "AUJ250394"
+    },
+    "AUJ250459": {
+      "name": "PRIYANSHU KUMAR MEHTA",
+      "roll": "AUJ250459"
+    },
+    "AUJ250463": {
+      "name": "SANJAY KUMAR SAW",
+      "roll": "AUJ250463"
+    },
+    "AUJ250464": {
+      "name": "NIKHIL  KUMAR",
+      "roll": "AUJ250464"
+    },
+    "AUJ250489": {
+      "name": "AMIT KUMAR YADAV",
+      "roll": "AUJ250489"
+    },
+    "AUJ250493": {
+      "name": "TARUNA  KUMARI",
+      "roll": "AUJ250493"
+    },
+    "AUJ250494": {
+      "name": "PRITI  KUMARI",
+      "roll": "AUJ250494"
+    },
+    "AUJ250500": {
+      "name": "SURKSHA  KUMARI",
+      "roll": "AUJ250500"
+    },
+    "AUJ250535": {
+      "name": "LILAWATI  KUMARI",
+      "roll": "AUJ250535"
+    },
+    "AUJ250559": {
+      "name": "SHUBHAM  KUMAR",
+      "roll": "AUJ250559"
+    },
+    "AUJ250566": {
+      "name": "NITU  KUMARI",
+      "roll": "AUJ250566"
+    },
+    "AUJ250574": {
+      "name": "PAMMI  KUMARI",
+      "roll": "AUJ250574"
+    },
+    "AUJ250576": {
+      "name": "SAPNA  KUMARI",
+      "roll": "AUJ250576"
+    },
+    "AUJ250579": {
+      "name": "RAHUL KUMAR RANA",
+      "roll": "AUJ250579"
+    },
+    "AUJ250580": {
+      "name": "NITIN KUMAR RANA",
+      "roll": "AUJ250580"
+    },
+    "AUJ250585": {
+      "name": "PRITHVI RAJ GUPTA",
+      "roll": "AUJ250585"
+    },
+    "AUJ250596": {
+      "name": "TANNU  SINHA",
+      "roll": "AUJ250596"
+    },
+    "AUJ250604": {
+      "name": "AMIT KUMAR YADAV",
+      "roll": "AUJ250604"
+    },
+    "AUJ250605": {
+      "name": "KUNDAN KUMAR SHARMA",
+      "roll": "AUJ250605"
+    },
+    "AUJ250617": {
+      "name": "LUTAN  SAW",
+      "roll": "AUJ250617"
+    },
+    "AUJ250623": {
+      "name": "MOTILAL  MAHTO",
+      "roll": "AUJ250623"
+    },
+    "AUJ250635": {
+      "name": "EMANUEL  BASKEY",
+      "roll": "AUJ250635"
+    },
+    "AUJ250642": {
+      "name": "SANU  PRIYA",
+      "roll": "AUJ250642"
+    },
+    "AUJ250649": {
+      "name": "DIVYA  RANI",
+      "roll": "AUJ250649"
+    },
+    "AUJ250675": {
+      "name": "MANISHA  SINGH",
+      "roll": "AUJ250675"
+    },
+    "AUJ250680": {
+      "name": "RITIK KUMAR SONI",
+      "roll": "AUJ250680"
+    },
+    "AUJ250708": {
+      "name": "LUCKY  KUMARI",
+      "roll": "AUJ250708"
+    },
+    "AUJ250713": {
+      "name": "KIRAN  KUMARI",
+      "roll": "AUJ250713"
+    },
+    "AUJ250714": {
+      "name": "UJJWAL  SHARMA",
+      "roll": "AUJ250714"
+    },
+    "AUJ250718": {
+      "name": "PANKAJ  SINGH",
+      "roll": "AUJ250718"
+    },
+    "AUJ250721": {
+      "name": "PRABHA  KUMARI",
+      "roll": "AUJ250721"
+    },
+    "AUJ250737": {
+      "name": "SAURABH  KUMAR",
+      "roll": "AUJ250737"
+    },
+    "AUJ250738": {
+      "name": "SANAM  ARSHI",
+      "roll": "AUJ250738"
+    },
+    "AUJ250741": {
+      "name": "AYUSH  KUMAR",
+      "roll": "AUJ250741"
+    },
+    "AUJ250748": {
+      "name": "NEHAL  RAZA",
+      "roll": "AUJ250748"
+    },
+    "AUJ250749": {
+      "name": "ESHAN  AHMAD",
+      "roll": "AUJ250749"
+    },
+    "AUJ250755": {
+      "name": "MANAS  KUMAR",
+      "roll": "AUJ250755"
+    },
+    "AUJ250759": {
+      "name": "LALAN  KUMAR",
+      "roll": "AUJ250759"
+    },
+    "AUJ250760": {
+      "name": "MOHAMMAD MOHSIN RAZA",
+      "roll": "AUJ250760"
+    },
+    "AUJ250761": {
+      "name": "SAPNA  KUMARI",
+      "roll": "AUJ250761"
+    },
+    "AUJ250765": {
+      "name": "KAIF  RAZA",
+      "roll": "AUJ250765"
+    },
+    "AUJ250766": {
+      "name": "RISHU  RANI",
+      "roll": "AUJ250766"
+    },
+    "AUJ250767": {
+      "name": "SURAJ KUMAR MANDAL",
+      "roll": "AUJ250767"
+    },
+    "AUJ250775": {
+      "name": "SAURAV KUMAR SINGH",
+      "roll": "AUJ250775"
+    },
+    "AUJ250782": {
+      "name": "BIVEK  KUMAR",
+      "roll": "AUJ250782"
+    },
+    "AUJ250783": {
+      "name": "SONU KUMAR GIRI",
+      "roll": "AUJ250783"
+    },
+    "AUJ250791": {
+      "name": "NISHANT  SINGH",
+      "roll": "AUJ250791"
+    },
+    "AUJ250794": {
+      "name": "ANUJ  KUMAR",
+      "roll": "AUJ250794"
+    },
+    "AUJ250795": {
+      "name": "PUJA  KUMARI",
+      "roll": "AUJ250795"
+    },
+    "AUJ250859": {
+      "name": "WARSHA  RANI",
+      "roll": "AUJ250859"
+    },
+    "AUJ250863": {
+      "name": "KUNDAN  KUMAR",
+      "roll": "AUJ250863"
+    },
+    "AUJ250864": {
+      "name": "ANMOL  KUMAR",
+      "roll": "AUJ250864"
+    },
+    "AUJ250865": {
+      "name": "RITESH  KUMAR",
+      "roll": "AUJ250865"
+    },
+    "AUJ250869": {
+      "name": "GAJALA  PRAVEEN",
+      "roll": "AUJ250869"
+    },
+    "AUJ250900": {
+      "name": "CHANDAN KUMAR MEHTA",
+      "roll": "AUJ250900"
+    },
+    "AUJ250902": {
+      "name": "SHITAL  KUMARI",
+      "roll": "AUJ250902"
+    },
+    "AUJ250919": {
+      "name": "VISHAL KUMAR PANDEY",
+      "roll": "AUJ250919"
+    },
+    "AUJ250928": {
+      "name": "SWETA  RANI",
+      "roll": "AUJ250928"
+    },
+    "AUJ250935": {
+      "name": "ROSHAN PRASAD KUSHWAHA",
+      "roll": "AUJ250935"
+    },
+    "AUJ250952": {
+      "name": "PRAVEEN  KUMAR",
+      "roll": "AUJ250952"
+    },
+    "AUJ250962": {
+      "name": "SAPNA  KUMARI",
+      "roll": "AUJ250962"
+    },
+    "AUJ250964": {
+      "name": "DILIP  KUMAR",
+      "roll": "AUJ250964"
+    },
+    "AUJ250986": {
+      "name": "SUBHASH  KUMAR",
+      "roll": "AUJ250986"
+    },
+    "AUJ251005": {
+      "name": "FAIZAN  ANSARI",
+      "roll": "AUJ251005"
+    },
+    "AUJ251014": {
+      "name": "KESHAV  VIBHORE",
+      "roll": "AUJ251014"
+    },
+    "AUJ251026": {
+      "name": "PAWAN  MAHTO",
+      "roll": "AUJ251026"
+    },
+    "AUJ251031": {
+      "name": "RUKSHAR  PARWEEN",
+      "roll": "AUJ251031"
+    },
+    "AUJ251033": {
+      "name": "PALAK  ARYAN",
+      "roll": "AUJ251033"
+    },
+    "AUJ251036": {
+      "name": "NAVDEEP  RAJ",
+      "roll": "AUJ251036"
+    },
+    "AUJ251037": {
+      "name": "KRISHNA KUMAR YADAV",
+      "roll": "AUJ251037"
+    },
+    "AUJ251085": {
+      "name": "BISHESH  KUMAR",
+      "roll": "AUJ251085"
+    },
+    "AUJ251102": {
+      "name": "ADITYA  KUMAR",
+      "roll": "AUJ251102"
+    },
+    "AUJ251104": {
+      "name": "NIDHI  KUMARI",
+      "roll": "AUJ251104"
+    },
+    "AUJ251108": {
+      "name": "MINTU  KUMAR",
+      "roll": "AUJ251108"
+    },
+    "AUJ251127": {
+      "name": "RICHA  KUMARI",
+      "roll": "AUJ251127"
+    },
+    "AUJ251156": {
+      "name": "HARSH  RAJ",
+      "roll": "AUJ251156"
+    },
+    "AUJ251161": {
+      "name": "MD SUFYAN AHMAD",
+      "roll": "AUJ251161"
+    },
+    "AUJ251165": {
+      "name": "RAM  KUMAR",
+      "roll": "AUJ251165"
+    },
+    "AUJ251166": {
+      "name": "AYUSH  KUMAR",
+      "roll": "AUJ251166"
+    },
+    "AUJ251168": {
+      "name": "PREM KUMAR GUPTA",
+      "roll": "AUJ251168"
+    },
+    "AUJ251174": {
+      "name": "MD KAIF ANSARI",
+      "roll": "AUJ251174"
+    },
+    "AUJ251175": {
+      "name": "RAJAN  KUMAR",
+      "roll": "AUJ251175"
+    },
+    "AUJ251185": {
+      "name": "AYUSH ARYAN MAURYA",
+      "roll": "AUJ251185"
+    },
+    "AUJ251196": {
+      "name": "ROHIT  YADAV",
+      "roll": "AUJ251196"
+    },
+    "AUJ251203": {
+      "name": "SIDDHARTH  SINGH",
+      "roll": "AUJ251203"
+    },
+    "AUJ251204": {
+      "name": "SAHIL KUMAR RANA",
+      "roll": "AUJ251204"
+    },
+    "AUJ251251": {
+      "name": "PIYUSH KUMAR MODI",
+      "roll": "AUJ251251"
+    },
+    "AUJ251291": {
+      "name": "BHANU PRATAP SINGH",
+      "roll": "AUJ251291"
+    },
+    "AUJ251292": {
+      "name": "SHANKAR  RANA",
+      "roll": "AUJ251292"
+    },
+    "AUJ251293": {
+      "name": "NITISH  RAJ",
+      "roll": "AUJ251293"
+    },
+    "AUJ251303": {
+      "name": "MANISH  YADAV",
+      "roll": "AUJ251303"
+    },
+    "AUJ251304": {
+      "name": "PRINCE  RAJ",
+      "roll": "AUJ251304"
+    },
+    "AUJ251317": {
+      "name": "SUJIT  KUMAR",
+      "roll": "AUJ251317"
+    },
+    "AUJ251333": {
+      "name": "ABHISHEK PRATAP KAUSHIK",
+      "roll": "AUJ251333"
+    },
+    "AUJ251338": {
+      "name": "PRATIMA  KUMARI",
+      "roll": "AUJ251338"
+    },
+    "AUJ251347": {
+      "name": "SAHIL  ANSARI",
+      "roll": "AUJ251347"
+    },
+    "AUJ251352": {
+      "name": "PRINCE  RAJ",
+      "roll": "AUJ251352"
+    },
+    "AUJ251353": {
+      "name": "AFSAR  IMAM",
+      "roll": "AUJ251353"
+    },
+    "AUJ251357": {
+      "name": "SAHIL  ANSARI",
+      "roll": "AUJ251357"
+    },
+    "AUJ251358": {
+      "name": "MANNU FULCHAND MANDAL",
+      "roll": "AUJ251358"
+    },
+    "AUJ251360": {
+      "name": "ROSHAN  SINGH",
+      "roll": "AUJ251360"
+    },
+    "AUJ251372": {
+      "name": "RAHUL  PANDIT",
+      "roll": "AUJ251372"
+    },
+    "AUJ251379": {
+      "name": "RIYA  KUMARI",
+      "roll": "AUJ251379"
+    },
+    "AUJ251380": {
+      "name": "KARAN  PRASAD",
+      "roll": "AUJ251380"
+    },
+    "AUJ251388": {
+      "name": "SANJANA  KUMARI",
+      "roll": "AUJ251388"
+    },
+    "AUJ251423": {
+      "name": "NEHAL  ALAM",
+      "roll": "AUJ251423"
+    },
+    "AUJ251424": {
+      "name": "DEEPAK  KUMAR",
+      "roll": "AUJ251424"
+    },
+    "AUJ251425": {
+      "name": "MD  SOHAIL",
+      "roll": "AUJ251425"
+    },
+    "AUJ251429": {
+      "name": "RAJESH  SINGH",
+      "roll": "AUJ251429"
+    },
+    "AUJ251430": {
+      "name": "SUMAN KUMAR RANA",
+      "roll": "AUJ251430"
+    },
+    "AUJ251436": {
+      "name": "ANU  RAJ",
+      "roll": "AUJ251436"
+    },
+    "AUJ251437": {
+      "name": "NATASHA  KUMARI",
+      "roll": "AUJ251437"
+    },
+    "AUJ251438": {
+      "name": "ASHIKA  PRAVEEN",
+      "roll": "AUJ251438"
+    },
+    "AUJ251465": {
+      "name": "SUNIL  KUMAR",
+      "roll": "AUJ251465"
+    },
+    "AUJ251467": {
+      "name": "PIYUSH KUMAR RAM",
+      "roll": "AUJ251467"
+    },
+    "AUJ251469": {
+      "name": "PRAWEEN  KUMAR",
+      "roll": "AUJ251469"
+    },
+    "AUJ251478": {
+      "name": "GULAM  MODASSIR",
+      "roll": "AUJ251478"
+    },
+    "AUJ251482": {
+      "name": "AJIT KUMAR SAV",
+      "roll": "AUJ251482"
+    },
+    "AUJ251491": {
+      "name": "ROHAN KUMAR RANA",
+      "roll": "AUJ251491"
+    },
+    "AUJ251502": {
+      "name": "TRILOKI KUMAR PATEL",
+      "roll": "AUJ251502"
+    },
+    "AUJ251503": {
+      "name": "SOURAV KUMAR PANDEY",
+      "roll": "AUJ251503"
+    },
+    "AUJ251509": {
+      "name": "AMIT  KUMAR",
+      "roll": "AUJ251509"
+    },
+    "AUJ251544": {
+      "name": "SUKANTA  SINGH",
+      "roll": "AUJ251544"
+    },
+    "AUJ251545": {
+      "name": "MANISHA  KUMARI",
+      "roll": "AUJ251545"
+    },
+    "AUJ251560": {
+      "name": "SUHIL KUMAR RANA",
+      "roll": "AUJ251560"
+    },
+    "AUJ251566": {
+      "name": "AASHISH  KUMAR",
+      "roll": "AUJ251566"
+    },
+    "AUJ251567": {
+      "name": "PRINCE KUMAR SONAR",
+      "roll": "AUJ251567"
+    },
+    "AUJ251569": {
+      "name": "NITESH KUMAR RAWANI",
+      "roll": "AUJ251569"
+    },
+    "AUJ251576": {
+      "name": "KISHOR  THAKUR",
+      "roll": "AUJ251576"
+    },
+    "AUJ251586": {
+      "name": "GAUTAM  PASWAN",
+      "roll": "AUJ251586"
+    },
+    "AUJ251588": {
+      "name": "NALINI  KUMARI",
+      "roll": "AUJ251588"
+    },
+    "AUJ251608": {
+      "name": "NITESH KUMAR VERMA",
+      "roll": "AUJ251608"
+    },
+    "AUJ251609": {
+      "name": "PANKAJ KUMAR VERMA",
+      "roll": "AUJ251609"
+    },
+    "AUJ251631": {
+      "name": "RAJ  KUMAR",
+      "roll": "AUJ251631"
+    },
+    "AUJ251634": {
+      "name": "RUPESH  YADAV",
+      "roll": "AUJ251634"
+    },
+    "AUJ251640": {
+      "name": "SHITAL KUMAR CHOUBEY",
+      "roll": "AUJ251640"
+    },
+    "AUJ251641": {
+      "name": "RISHI KUMAR SHARMA",
+      "roll": "AUJ251641"
+    },
+    "AUJ251650": {
+      "name": "IZMAMUL  HAUK",
+      "roll": "AUJ251650"
+    },
+    "AUJ251661": {
+      "name": "NIKHIL  KUMAR",
+      "roll": "AUJ251661"
+    },
+    "AUJ251677": {
+      "name": "RAJAN  KUMAR",
+      "roll": "AUJ251677"
+    },
+    "AUJ251678": {
+      "name": "AMIT KUMAR YADAV",
+      "roll": "AUJ251678"
+    },
+    "AUJ251679": {
+      "name": "ISHANK KUMAR SINHA",
+      "roll": "AUJ251679"
+    },
+    "AUJ251756": {
+      "name": "NAVEEN  KUMAR",
+      "roll": "AUJ251756"
+    },
+    "AUJ251782": {
+      "name": "ABHISHEK  MEHTA",
+      "roll": "AUJ251782"
+    },
+    "AUJ251783": {
+      "name": "SAURAV  KUMAR",
+      "roll": "AUJ251783"
+    },
+    "AUJ251842": {
+      "name": "AMAN  RAJ",
+      "roll": "AUJ251842"
+    },
+    "AUJ251852": {
+      "name": "SUNNY  THAKUR",
+      "roll": "AUJ251852"
+    },
+    "AUJ251868": {
+      "name": "KOUSTUB  KRISH",
+      "roll": "AUJ251868"
+    },
+    "AUJ251887": {
+      "name": "KARAN  KUMAR",
+      "roll": "AUJ251887"
+    },
+    "AUJ251979": {
+      "name": "RISHI  KUMAR",
+      "roll": "AUJ251979"
+    },
+    "AUJ251981": {
+      "name": "SOHAN KUMAR SHARMA",
+      "roll": "AUJ251981"
+    },
+    "AUJ252008": {
+      "name": "HARENDRA KUMAR MAHTO",
+      "roll": "AUJ252008"
+    },
+    "AUJ252019": {
+      "name": "PUJA  KUMARI",
+      "roll": "AUJ252019"
+    },
+    "AUJ252031": {
+      "name": "CHANDAN KUMAR SAW",
+      "roll": "AUJ252031"
+    },
+    "AUJ252058": {
+      "name": "HIMANSHU  KUMAR",
+      "roll": "AUJ252058"
+    },
+    "AUJ252067": {
+      "name": "ASHWANI  KUMAR",
+      "roll": "AUJ252067"
+    },
+    "AUJ252068": {
+      "name": "ROHIT  KUMAR",
+      "roll": "AUJ252068"
+    },
+    "AUJ252069": {
+      "name": "AKASH KUMAR MEHTA",
+      "roll": "AUJ252069"
+    },
+    "AUJ252084": {
+      "name": "AYUSH  KUMAR",
+      "roll": "AUJ252084"
+    },
+    "AUJ252204": {
+      "name": "PRIYA  KUMARI",
+      "roll": "AUJ252204"
+    },
+    "AUJ252205": {
+      "name": "SHIVANI  KUMARI",
+      "roll": "AUJ252205"
+    },
+    "AUJ252207": {
+      "name": "NIRAJ KUMAR YADAV",
+      "roll": "AUJ252207"
+    },
+    "AUJ252211": {
+      "name": "KHUSHI  KUMARI",
+      "roll": "AUJ252211"
+    },
+    "AUJ252221": {
+      "name": "RAHUL KUMAR VISHWAKARMA",
+      "roll": "AUJ252221"
+    },
+    "AUJ252229": {
+      "name": "VIKRANT KUMAR RAVI",
+      "roll": "AUJ252229"
+    },
+    "AUJ252230": {
+      "name": "SHAHBAJ  ALAM",
+      "roll": "AUJ252230"
+    },
+    "AUJ252235": {
+      "name": "VIKASH  VISHWAKARMA",
+      "roll": "AUJ252235"
+    },
+    "AUJ252385": {
+      "name": "ANKIT  KUMAR",
+      "roll": "AUJ252385"
+    },
+    "AUJ252407": {
+      "name": "ASHISH  KUMAR",
+      "roll": "AUJ252407"
+    },
+    "AUJ252461": {
+      "name": "SAMBHAVI  RANI",
+      "roll": "AUJ252461"
+    },
+    "AUJ252483": {
+      "name": "JITAN  RAY",
+      "roll": "AUJ252483"
+    },
+    "AUJ250010": {
+      "name": "ANUPAM  MISHRA",
+      "roll": "AUJ250010"
+    },
+    "AUJ250307": {
+      "name": "AYUSH KUMAR RAY",
+      "roll": "AUJ250307"
+    },
+    "AUJ250486": {
+      "name": "RAHUL  KUMAR",
+      "roll": "AUJ250486"
+    },
+    "AUJ250516": {
+      "name": "SURYANSH  KISHAN",
+      "roll": "AUJ250516"
+    },
+    "AUJ250549": {
+      "name": "VIKASH KUMAR TIWARI",
+      "roll": "AUJ250549"
+    },
+    "AUJ250550": {
+      "name": "RISHABH KUMAR DUBEY",
+      "roll": "AUJ250550"
+    },
+    "AUJ250627": {
+      "name": "KAILASH  KUMAR",
+      "roll": "AUJ250627"
+    },
+    "AUJ250643": {
+      "name": "SUFIYAN  KHAN",
+      "roll": "AUJ250643"
+    },
+    "AUJ250762": {
+      "name": "PRIYANSHU  PATEL",
+      "roll": "AUJ250762"
+    },
+    "AUJ250878": {
+      "name": "PIYUSH  KUMAR",
+      "roll": "AUJ250878"
+    },
+    "AUJ251186": {
+      "name": "GANESH KUMAR RANA",
+      "roll": "AUJ251186"
+    },
+    "AUJ251189": {
+      "name": "MANTU  KUMAR",
+      "roll": "AUJ251189"
+    },
+    "AUJ251247": {
+      "name": "SHIV KUMAR YADAV",
+      "roll": "AUJ251247"
+    },
+    "AUJ251328": {
+      "name": "ABHISHEK  KUMAR",
+      "roll": "AUJ251328"
+    },
+    "AUJ251654": {
+      "name": "RAJU  KUMAR",
+      "roll": "AUJ251654"
+    },
+    "AUJ252092": {
+      "name": "SIFAT  PARWEEN",
+      "roll": "AUJ252092"
+    },
+    "AUJ252110": {
+      "name": "AAYIK  KUMAR",
+      "roll": "AUJ252110"
+    },
+    "AUJ252220": {
+      "name": "FURKAN  ANSARI",
+      "roll": "AUJ252220"
+    },
+    "AUJ252222": {
+      "name": "ARYAN RAJ SINGH",
+      "roll": "AUJ252222"
+    },
+    "AUJ252226": {
+      "name": "ASHISH KUMAR SINGH",
+      "roll": "AUJ252226"
+    },
+    "AUJ252227": {
+      "name": "SACHIN KUMAR SINGH",
+      "roll": "AUJ252227"
+    },
+    "AUJ252228": {
+      "name": "SAKET  MISHRA",
+      "roll": "AUJ252228"
+    },
+    "AUJ252231": {
+      "name": "ANSHUMAN  TIWARI",
+      "roll": "AUJ252231"
+    },
+    "AUJ252232": {
+      "name": "ADITI  SINHA",
+      "roll": "AUJ252232"
+    },
+    "AUJ252233": {
+      "name": "PRITI  KUMARI",
+      "roll": "AUJ252233"
+    },
+    "AUJ252236": {
+      "name": "KETAN KUMAR SINGH",
+      "roll": "AUJ252236"
+    },
+    "AUJ252237": {
+      "name": "UMANG KUMAR SINGH",
+      "roll": "AUJ252237"
+    },
+    "AUJ252264": {
+      "name": "SHOBHA  KUMARI",
+      "roll": "AUJ252264"
+    },
+    "AUJ252293": {
+      "name": "HARSHVARDHAN KUMAR SHARMA",
+      "roll": "AUJ252293"
+    }
+  }
+}

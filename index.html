@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <title>Fresher Registration</title>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="landerPage.css" />
+  </head>
+  <script src="script.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+    }
+
+    #welcome {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.585);
+      backdrop-filter: blur(50px);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5vw;
+      max-height: 100vh;
+      text-align: center;
+      font-weight: 600;
+      z-index: 1000;
+      animation: fadeOut 1s ease-in-out 2s forwards;
+    }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.6s ease, visibility 0s 0.6s;
+        visibility: hidden;
+      }
+    }
+
+    #main {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      #welcome {
+        font-size: 7.7vw;
+        padding: 4vw;
+      }
+    }
+    @media (max-width: 600px), (max-height: 500px) {
+      #welcome {
+        font-size: 1.4rem;
+        padding: 10vw 3vw;
+      }
+    }
+  </style>
+  <body>
+    <div id="welcome">🎉 Fresher Party 2025 🎉</div>
+
+    <section class="show">
+      <header>
+        <a href="index.html"> <h2 class="logo">YUVOTSAV 2025🔥</h2></a>
+        <div class="toggle"></div>
+      </header>
+
+      <video src="Assets/cubematrix.mp4" muted loop autoplay></video>
+
+      <div class="overlay"></div>
+
+      <div class="text">
+        <h2>
+          Welcome <span style="color: rgba(255, 0, 0, 0.854)">Fresher's</span>
+        </h2>
+        <h3>
+          Let's Decode the
+          <span style="color: yellow">Fun!</span>
+        </h3>
+
+        <p>Click the button below to Generate your pass</p>
+        <a href="#" onclick="display();">Generate Pass</a>
+      </div>
+
+      <ul class="social">
+        <li>
+          <a
+            href="https://api.whatsapp.com/send/?phone=918102767360"
+            target="_parent"
+            >Contact Us</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://api.whatsapp.com/send/?phone=918102767360&text=Hello%21+%27Shivanshu%27+There+is+a+Bug+on+the+Website+%3A&type=phone_number&app_absent=0"
+            target="_parent"
+            >Report
+          </a>
+        </li>
+      </ul>
+
+      <!-- here is the form section to enteered into by the student  -->
+      <form action="" class="form1">
+        <div class="card">
+          <h1>Fresher Party 2025</h1>
+          <label>Name :</label>
+          <input
+            type="text"
+            id="studentName"
+            required
+            placeholder="Enter Name"
+          />
+
+          <label>Enrollment Number : </label>
+          <input
+            type="text"
+            id="studentRoll"
+            required="please enter the enorllment id"
+            placeholder="AUJ230001"
+          />
+
+          <div class="btn-wrapper">
+            <button id="generateBtn" onclick="verifyStudent(event);">
+              Generate QR
+            </button>
+          </div>
+          <div id="loader" class="loader"></div>
+          <div
+            id="loaderText"
+            style="
+              display: none;
+              text-align: center;
+              color: #00eaff;
+              font-weight: 600;
+              font-family: monospace;
+            "
+          >
+            Verifying student...
+          </div>
+
+          <!-- result show allowed or not  -->
+          <br />
+          <div id="result" class="result"></div>
+          <div id="qrcode" class="qrcode">Congratulations</div>
+          <div class="download-wrap-btn">
+            <button id="downloadQR" style="display: none">
+              ⬇Download QR Code
+            </button>
+          </div>
+
+          <p class="note">
+            After generating, download the QR or take a screenshot.
+          </p>
+          <a href="index.html" class="back-btn">Go back ←</a>
+        </div>
+      </form>
+    </section>
+
+    <div class="menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="scan.html">Scan QR</a></li>
+        <li><a href="rules.html">Rules </a></li>
+        <li><a href="#" onclick="display();">Register</a></li>
+      </ul>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      // welcome slide logic
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("welcome");
+        const hasLoadedBefore = sessionStorage.getItem("hasLoadedBefore");
+        if (!hasLoadedBefore) {
+          // Show loader for 2 seconds only on first load
+          setTimeout(() => {
+            loader.classList.add("hide");
+            sessionStorage.setItem("hasLoadedBefore", "true");
+          }, 3000);
+        } else {
+          // Hide immediately if already loaded once
+          loader.style.display = "none";
+        }
+      });
+
+      const menuToggle = document.querySelector(".toggle");
+      const show = document.querySelector(".show");
+
+      menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        show.classList.toggle("active");
+      });
+
+      function display() {
+        console.log("chal raha hai na ");
+        const form = document
+          .querySelector(".form1")
+          .classList.add("display-form1");
+        document.querySelector(".text").classList.add("hide-text");
+      }
+
+      // document.getElementById("generateBtn").addEventListener("click", generateQR);
+    </script>
+  </body>
+</html>
