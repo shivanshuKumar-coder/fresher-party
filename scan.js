@@ -162,8 +162,7 @@ scanNextBtn.addEventListener("click", () => {
 });
 
 
-// const pin = "8102767360";
-const pin = "8";
+const pin = "8102767360";
 const pinContainer = document.getElementById("pin-container");
 
 const passInput = document.getElementById("pass-input");
