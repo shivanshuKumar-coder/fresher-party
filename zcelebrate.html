@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+</head>
+<body>
+    
+    <script>
+        function celebrateQR() {
+  // Fire a beautiful confetti burst
+  const duration = 2 * 1000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+    });
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+
+  // Optional sound effect
+  const audio = new Audio("/Audio/celebration.wav");
+  audio.play();
+}
+
+
+function crackCelebrate() {
+  for (let i = 0; i < 30; i++) {
+    confetti({
+      angle: Math.random() * 360,
+      spread: 100,
+      startVelocity: 30,
+      particleCount: 5,
+      origin: { x: 0.5, y: 0.7 },
+      colors: ["#ff0", "#ff6600", "#00ffcc", "#ff33cc", "#ffffff"],
+    });
+  }
+
+  const boom = new Audio("https://www.soundjay.com/explosion/sounds/explosion-01.mp3");
+  boom.play();
+}
+
+crackCelebrate();
+celebrateQR();
+    </script>
+</body>
+</html>

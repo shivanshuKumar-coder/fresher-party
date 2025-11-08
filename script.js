@@ -30,6 +30,35 @@ function showToast(msg) {
   setTimeout(() => t.remove(), 2000);
 }
 
+// for cracking effect 
+  function celebrateQR() {
+  // Fire a beautiful confetti burst
+  const duration = 2 * 1000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+    });
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+
+  // Optional sound effect
+  const audio = new Audio("/Audio/celebration.wav");
+  audio.play();
+}
 
 function verifyStudent(event) {
   event.preventDefault(); // stop to refresh the form
@@ -114,6 +143,8 @@ function verifyStudent(event) {
                       width: 150,
                       height: 150,
                     });
+
+                    celebrateQR();
 
                     // Show the download button
                     downloadBtn.style.display = "inline-block";

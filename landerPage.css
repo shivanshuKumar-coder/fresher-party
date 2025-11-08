@@ -78,6 +78,7 @@ header a {
   height: 100%;
   object-fit: cover;
   opacity: 0.8;
+  will-change: transfrom;
 }
 
 .overlay {
