@@ -36,21 +36,6 @@ function playSound(type) {
   } 
 }
 
-const s = document.getElementById("speakBtn");
-s.addEventListener("click" , () => {
-  s.style.display = "none";
-})
-
-
-// ✅ Unlock audio + speech after user click
-document.body.addEventListener("click", function unlockAudio() {
-  // Unlock audio contexts (for mobile)
-  new Audio().play().catch(() => {});
-  const unlockSpeech = new SpeechSynthesisUtterance("");
-  window.speechSynthesis.speak(unlockSpeech);
-  document.body.removeEventListener("click", unlockAudio);
-  console.log("🔓 Audio + speech unlocked for mobile.");
-});
 
 // speak name of the students
 function speakName(name) {
