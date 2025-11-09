@@ -1,9 +1,3 @@
-const pin = "partyonrock";
-const pinContainer = document.getElementById("pin-container");
-const passInput = document.getElementById("pass-input");
-const pinSubmit = document.getElementById("pin-submit");
-const pinError = document.getElementById("pinError");
-const panelContainer = document.querySelector("#panel");
 
 
 
