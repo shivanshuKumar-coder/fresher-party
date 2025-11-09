@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background: #121212;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+
+h1 {
+  color: #00ffcc;
+}
+
+
+.stats {
+  margin: 20px auto;
+  width: 90%;
+  /* border: none; */
+  /* border-collapse: collapse; */
+  /* background: rgba(255, 255, 255, 0.05); */
+  /* border-style: groove; */
+  width: fit-content;
+  text-align: left;
+  gap: 20px;
+}
+.stats p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+#studentTable {
+  margin: 20px auto;
+  width: 90%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #555;
+}
+
+#downloadExcel,
+#resetBtn{
+  background: #00ffcc;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+#downloadExcel:hover , 
+#resetBtn:hover {
+  background: #00ffaa;
+}

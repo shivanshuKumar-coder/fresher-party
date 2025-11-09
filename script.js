@@ -114,8 +114,12 @@ function verifyStudent(event) {
               if (snapshot.exists()) {
                 // agar already qr generated hai to give the msg
                 const alreadyExist = Object.values(snapshot.val())[0];
+                
+                const audio = new Audio('Audio/error.mp3')
+                audio.play();
                 let j = (result.innerHTML =
                   "QR already generated for : " + alreadyExist.name);
+                  
               } else {
                 // all data matched then we go for the Qr Genertation
                 const uniqueCode = Math.random()
@@ -154,6 +158,8 @@ function verifyStudent(event) {
                     loader.style.display = "none"; // stop loader
                     loaderText.style.display = "none"; // hide loadertext
                     console.error("Error saving the QR :" + error);
+                    const audio = new Audio('Audio/error.mp3')
+                    audio.play();
                     result.innerHTML = "Error , saving QR to firebase. ";
                   });
               }
@@ -161,12 +167,16 @@ function verifyStudent(event) {
         } else {
           loader.style.display = "none"; // hide loader
           loaderText.style.display = "none"; // hide loadertext
+          const audio = new Audio('Audio/error.mp3')
+                audio.play();
           result.innerHTML = "Name Not matched with our database. ";
         }
       } else {
         loader.style.display = "none"; // hide loader
         loaderText.style.display = "none"; // hide loadertext
         qrDiv.style.display = "none";
+        const audio = new Audio('Audio/error.mp3')
+                audio.play();
         result.innerHTML = "Enrollment Not matched with our database. ";
       }
     })
@@ -175,12 +185,15 @@ function verifyStudent(event) {
       loaderText.style.display = "none"; // hide loadertext
       console.error(error);
       console.log("student is not listed in our database ... ");
+      const audio = new Audio('Audio/error.mp3')
+                audio.play();
       result.innerHTML = "Error verifying Student   ";
     });
-
+    name.value="";
+    roll.value = "";
 
     // Download logic
-downloadBtn.addEventListener("click", () => {
+  downloadBtn.addEventListener("click", () => {
   const qrContainer = document.getElementById("qrcode");
   const img = qrContainer.querySelector("img");
   const canvas = qrContainer.querySelector("canvas");
@@ -205,6 +218,8 @@ downloadBtn.addEventListener("click", () => {
 
   showToast("✅ QR Code Downloaded!");
 });
+
+    
 }
 
 

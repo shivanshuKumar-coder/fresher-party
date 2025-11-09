@@ -28,7 +28,7 @@ function playSound(type) {
   if (type === "success") {
     sound = new Audio("/Audio/SucessDing.mp3");
   } else if (type === "error") {
-    sound = new Audio("/Audio/ErrorBeep.wav");
+    sound = new Audio("/Audio/Error.mp3");
   }
 
   if (sound) {
@@ -164,7 +164,6 @@ scanNextBtn.addEventListener("click", () => {
 
 const pin = "8102767360";
 const pinContainer = document.getElementById("pin-container");
-
 const passInput = document.getElementById("pass-input");
 const pinSubmit = document.getElementById("pin-submit");
 const pinError = document.getElementById("pinError");
