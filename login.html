@@ -122,19 +122,29 @@
       const loginBtn = document.getElementById("loginBtn");
       const errorMsg = document.getElementById("errorMsg");
 
-      const ADMIN_USER = "bithunter";
-      const ADMIN_PASS = "partyonrock";
-
       loginBtn.addEventListener("click", () => {
         const user = document.getElementById("username").value.trim();
         const pass = document.getElementById("password").value.trim();
 
+<<<<<<< HEAD
         if (user === ADMIN_USER && pass === ADMIN_PASS) {
           // localStorage.setItem("isAdmin", "true");
           window.location.href = "Admin.html"; // Redirect to admin dashboard
         } else {
           errorMsg.textContent = "Invalid username or password!";
         }
+=======
+        db.ref("adminPin")
+          .get()
+          .then((snapshot) => {
+            if (snapshot.val() === enteredPin) {
+              localStorage.setItem("isAdmin", "true");
+              window.location.href = "admin.html";
+            } else {
+              errorMsg.textContent = "Invalid PIN!";
+            }
+          });
+>>>>>>> b97bc0d (added speaking)
       });
     </script>
   </body>

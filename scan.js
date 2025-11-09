@@ -36,6 +36,12 @@ function playSound(type) {
   } 
 }
 
+const speakBtn = document.getElementById("speakBtn");
+  document.body.addEventListener("click", () => {
+  const unlock = new SpeechSynthesisUtterance("");
+  window.speechSynthesis.speak(unlock);
+  document.body.removeEventListener("click", this);
+  });
 
 // speak name of the students
 function speakName(name) {

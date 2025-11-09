@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b97bc0d (added speaking)
 
 // firebase conecetivity
 const firebaseConfig = {

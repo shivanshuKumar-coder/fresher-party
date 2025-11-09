@@ -5,19 +5,31 @@
     <title>Admin Panel - Fresher Party</title>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<<<<<<< HEAD
     
+=======
+    <script>
+      if (localStorage.getItem("isAdmin") !== "true") {
+        window.location.href = "login.html";
+      }
+    </script>
+>>>>>>> b97bc0d (added speaking)
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="Admin.css" />
   </head>
   <body>
-   
-
     <section id="panel">
       <h1>🎉 Fresher Party Admin Dashboard</h1>
       <br />
       <div class="stats">
         <p>
+<<<<<<< HEAD
           Total Registered :&emsp; <span id="total">0</span>
+=======
+          Total Registered :&emsp; &emsp; &emsp;&emsp; &emsp;<span id="total"
+            >0</span
+          >
+>>>>>>> b97bc0d (added speaking)
         </p>
         <p>Entered (Scanned) :&emsp;  <span id="entered">0</span></p>
         <p>
@@ -26,7 +38,7 @@
       </div>
 
       <br />
-      <button id="resetBtn" >🔁 Reset All Entries </button>
+      <button id="resetBtn">🔁 Reset All Entries</button>
       <button id="downloadExcel">📥 Download Excel Backup</button>
 
       <table border="1" id="studentTable">

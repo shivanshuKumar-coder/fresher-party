@@ -133,6 +133,11 @@ h1 {
   color: rgb(239, 234, 234);
   transition: all 0.3s ease-in-out;
 }
+#speakBtn{
+  position: absolute;
+  top: 15%;
+  z-index: 1000;
+}
 button {
   margin-bottom: 0px;
   background: linear-gradient(45deg, #00f0ff, #00ff85);
