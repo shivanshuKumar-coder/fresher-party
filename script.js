@@ -161,30 +161,37 @@ function verifyStudent(event) {
   // nameInput.value = "";
   // rollInput.value = "";
 
-  // ✅ FIXED Download Logic (mobile-compatible)
- downloadBtn.addEventListener("click", () => {
+// ✅ Mobile + Desktop Compatible QR Download
+downloadBtn.addEventListener("click", () => {
   const qrContainer = document.getElementById("qrcode");
-  const canvas = qrContainer.querySelector("canvas");
-  const img = qrContainer.querySelector("img");
+  const canvas = qrContainer.querySelector("canvas") || qrContainer.querySelector("img");
 
-  let imageURL;
-
-  if (canvas) {
-    // Convert canvas to Blob (better for mobile)
-    canvas.toBlob((blob) => {
-      const url = URL.createObjectURL(blob);
-      triggerDownload(url);
-    }, "image/png");
-  } else if (img) {
-    // Convert image to Blob for consistent behavior
-    fetch(img.src)
-      .then((res) => res.blob())
-      .then((blob) => {
-        const url = URL.createObjectURL(blob);
-        triggerDownload(url);
-      });
-  } else {
+  if (!canvas) {
     alert("QR code not found!");
+    return;
+  }
+
+  // Detect if it’s iPhone/iPad Safari — which blocks auto downloads
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  if (canvas.tagName.toLowerCase() === "canvas") {
+    const dataURL = canvas.toDataURL("image/png");
+
+    if (isIOS) {
+      // iPhone/iPad Safari — open in a new tab to save manually
+      window.open(dataURL, "_blank");
+      showToast("Tap and hold the image to save your QR code 📱");
+    } else {
+      triggerDownload(dataURL);
+    }
+  } else {
+    // If QR library made an <img>
+    if (isIOS) {
+      window.open(canvas.src, "_blank");
+      showToast("Tap and hold the image to save your QR code 📱");
+    } else {
+      triggerDownload(canvas.src);
+    }
   }
 });
 
@@ -193,19 +200,13 @@ function triggerDownload(url) {
   a.href = url;
   a.download = "fresherparty_qr.png";
   document.body.appendChild(a);
-
-  // Try direct click
   a.click();
-
-  // For iOS Safari fallback
-  setTimeout(() => {
-    URL.revokeObjectURL(url);
-    document.body.removeChild(a);
-  }, 1000);
+  document.body.removeChild(a);
 
   showToast("✅ QR Code Downloaded!");
-  const msg = new SpeechSynthesisUtterance("QR Code downloaded successfully!");
+  const msg = new SpeechSynthesisUtterance("QR code downloaded successfully");
   window.speechSynthesis.speak(msg);
 }
+
 
 }
