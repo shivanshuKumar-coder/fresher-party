@@ -113,15 +113,19 @@ function verifyStudent(event) {
                     result.style.display = "none";
 
                     qrDiv.style.display = "block";
+                    qrDiv.innerHTML = "";
                     new QRCode(qrDiv, {
                       text: QRData,
-                      width: 150,
-                      height: 150,
+                      width: 200,
+                      height: 200,
                     });
 
                     celebrateQR();
                     downloadBtn.style.display = "inline-block";
                     qrDiv.scrollIntoView({ behavior: "smooth" });
+
+                    // ✅ Attach JPG Download
+                    setupQRDownload(downloadBtn, name);
                   })
                   .catch((error) => {
                     loader.style.display = "none";
@@ -156,57 +160,102 @@ function verifyStudent(event) {
       result.innerHTML = "Error verifying student.";
       console.error(error);
     });
-
-  // reset inputs
-  // nameInput.value = "";
-  // rollInput.value = "";
-
-// ✅ Mobile + Desktop Compatible QR Download
-downloadBtn.addEventListener("click", () => {
-  const qrContainer = document.getElementById("qrcode");
-  const canvas = qrContainer.querySelector("canvas") || qrContainer.querySelector("img");
-
-  if (!canvas) {
-    alert("QR code not found!");
-    return;
-  }
-
-  // Detect if it’s iPhone/iPad Safari — which blocks auto downloads
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
-  if (canvas.tagName.toLowerCase() === "canvas") {
-    const dataURL = canvas.toDataURL("image/png");
-
-    if (isIOS) {
-      // iPhone/iPad Safari — open in a new tab to save manually
-      window.open(dataURL, "_blank");
-      showToast("Tap and hold the image to save your QR code 📱");
-    } else {
-      triggerDownload(dataURL);
-    }
-  } else {
-    // If QR library made an <img>
-    if (isIOS) {
-      window.open(canvas.src, "_blank");
-      showToast("Tap and hold the image to save your QR code 📱");
-    } else {
-      triggerDownload(canvas.src);
-    }
-  }
-});
-
-function triggerDownload(url) {
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "fresherparty_qr.png";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-
-  showToast("✅ QR Code Downloaded!");
-  const msg = new SpeechSynthesisUtterance("QR code downloaded successfully");
-  window.speechSynthesis.speak(msg);
 }
 
+// ✅ Mobile + Desktop Compatible JPG QR Download with Header Banner & Name
+function setupQRDownload(downloadBtn, studentName) {
+  downloadBtn.onclick = () => {
+    const qrContainer = document.getElementById("qrcode");
+    const canvas =
+      qrContainer.querySelector("canvas") || qrContainer.querySelector("img");
 
+    if (!canvas) {
+      alert("QR code not found!");
+      return;
+    }
+
+    const finalCanvas = document.createElement("canvas");
+    const ctx = finalCanvas.getContext("2d");
+    const qrSize = 200;
+    const padding = 40;
+    const bannerHeight = 70;
+    const nameGap = 70; // Increased space below QR
+
+    finalCanvas.width = qrSize + padding * 2;
+    finalCanvas.height = bannerHeight + qrSize + nameGap + padding;
+
+    // White background
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
+
+    // Banner box
+    const gradient = ctx.createLinearGradient(0, 0, finalCanvas.width, 0);
+    gradient.addColorStop(0, "#FF5733");
+    gradient.addColorStop(1, "#C70039");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, finalCanvas.width, bannerHeight);
+
+    // Banner text
+    ctx.fillStyle = "white";
+    ctx.font = "bold 28px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("Fresher Party 2025", finalCanvas.width / 2, bannerHeight / 2);
+
+    // Draw QR code
+    if (canvas.tagName.toLowerCase() === "canvas") {
+      ctx.drawImage(
+        canvas,
+        padding,
+        bannerHeight + 10,
+        qrSize,
+        qrSize
+      );
+      drawName();
+    } else {
+      const img = new Image();
+      img.src = canvas.src;
+      img.onload = () => {
+        ctx.drawImage(img, padding, bannerHeight + 10, qrSize, qrSize);
+        drawName();
+      };
+    }
+
+    function drawName() {
+      // Student Name below QR
+      ctx.fillStyle = "#000";
+      ctx.font = "bold 22px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText(
+        studentName,
+        finalCanvas.width / 2,
+        bannerHeight + qrSize + 45 // More space under QR
+      );
+
+      // Convert to JPG
+      const dataURL = finalCanvas.toDataURL("image/jpeg", 1.0);
+
+      // Handle Mobile vs Desktop
+      const isIOS =
+        /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+      if (isIOS) {
+        window.open(dataURL, "_blank");
+        showToast("📱 Tap and hold image to save your QR code");
+      } else {
+        const a = document.createElement("a");
+        a.href = dataURL;
+        a.download = `${studentName}_QR.jpg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        showToast("✅ QR Code Downloaded!");
+      }
+
+      const msg = new SpeechSynthesisUtterance(
+        "QR code downloaded successfully"
+      );
+      window.speechSynthesis.speak(msg);
+    }
+  };
 }
