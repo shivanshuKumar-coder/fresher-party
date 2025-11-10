@@ -162,41 +162,50 @@ function verifyStudent(event) {
   // rollInput.value = "";
 
   // ✅ FIXED Download Logic (mobile-compatible)
-  downloadBtn.addEventListener("click", () => {
-    const qrContainer = document.getElementById("qrcode");
-    const canvas = qrContainer.querySelector("canvas");
-    const img = qrContainer.querySelector("img");
+ downloadBtn.addEventListener("click", () => {
+  const qrContainer = document.getElementById("qrcode");
+  const canvas = qrContainer.querySelector("canvas");
+  const img = qrContainer.querySelector("img");
 
-    if (canvas) {
-      // Works on mobile + desktop
-      canvas.toBlob((blob) => {
-        const link = document.createElement("a");
+  let imageURL;
+
+  if (canvas) {
+    // Convert canvas to Blob (better for mobile)
+    canvas.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      triggerDownload(url);
+    }, "image/png");
+  } else if (img) {
+    // Convert image to Blob for consistent behavior
+    fetch(img.src)
+      .then((res) => res.blob())
+      .then((blob) => {
         const url = URL.createObjectURL(blob);
-        link.href = url;
-        link.download = "fresherparty_qr.png";
-
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-
-        showToast("✅ QR Code Downloaded!");
-        const msg = new SpeechSynthesisUtterance("QR Code downloaded successfully!");
-        window.speechSynthesis.speak(msg);
+        triggerDownload(url);
       });
-    } else if (img) {
-      const link = document.createElement("a");
-      link.href = img.src;
-      link.download = "fresherparty_qr.png";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+  } else {
+    alert("QR code not found!");
+  }
+});
 
-      showToast("✅ QR Code Downloaded!");
-      const msg = new SpeechSynthesisUtterance("QR Code downloaded successfully!");
-      window.speechSynthesis.speak(msg);
-    } else {
-      alert("QR Code not found!");
-    }
-  });
+function triggerDownload(url) {
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "fresherparty_qr.png";
+  document.body.appendChild(a);
+
+  // Try direct click
+  a.click();
+
+  // For iOS Safari fallback
+  setTimeout(() => {
+    URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  }, 1000);
+
+  showToast("✅ QR Code Downloaded!");
+  const msg = new SpeechSynthesisUtterance("QR Code downloaded successfully!");
+  window.speechSynthesis.speak(msg);
+}
+
 }
