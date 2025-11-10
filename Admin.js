@@ -1,5 +1,19 @@
+const genqr = document.getElementById("genQr");
+const showGenQrElement = document.getElementById("show-Gen-qr");
 
+let isVisible = false; // state flag
 
+genqr.addEventListener("click", () => {
+  if (!isVisible) {
+    showGenQrElement.style.display = "block";
+    genqr.textContent = "❌ Close";
+    isVisible = true;
+  } else {
+    showGenQrElement.style.display = "none";
+    genqr.textContent = "⚙️ Generate QR";
+    isVisible = false;
+  }
+});
 
 // firebase conecetivity
 const firebaseConfig = {
@@ -72,22 +86,21 @@ function loadDataFromFirebase() {
 }
 loadDataFromFirebase();
 
-function asking()
-{
-    if(confirm("Are you sure you want to reset all entries to 'not scanned' ?")){
-        if(confirm("Again confirm  ,  Are you sure you want to reset it ?")){
-            return true;
-        }
+function asking() {
+  if (
+    confirm("Are you sure you want to reset all entries to 'not scanned' ?")
+  ) {
+    if (confirm("Again confirm  ,  Are you sure you want to reset it ?")) {
+      return true;
     }
+  }
 }
-// reset to not scanned logic 
+// reset to not scanned logic
 resetBtn.addEventListener("click", () => {
-
-    // asking before resset the entries
-    if(!asking())
-    {
-        return ;
-    }
+  // asking before resset the entries
+  if (!asking()) {
+    return;
+  }
   db.ref("entries")
     .once("value")
     .then((snapshot) => {
@@ -98,16 +111,15 @@ resetBtn.addEventListener("click", () => {
       Object.keys(data).forEach((code) => {
         updates[`entries/${code}/status`] = "not scanned";
       });
-    //   console.log(updates);
-    db.ref().update(updates)
-      .then( () => {
-        alert("All entries have been reset to 'not scanned'. ");
-        return;
-      })
-      .catch(err => alert("Error resseting the entries ." + err.message));
-
+      //   console.log(updates);
+      db.ref()
+        .update(updates)
+        .then(() => {
+          alert("All entries have been reset to 'not scanned'. ");
+          return;
+        })
+        .catch((err) => alert("Error resseting the entries ." + err.message));
     });
-
 });
 
 // download excel sheet
@@ -116,22 +128,22 @@ downloadBtn.addEventListener("click", () => {
     const data = snapshot.val();
     if (!data) return alert("No data found!");
 
-    const headingInTable  = "Fresher Party Entries Detail";
+    const headingInTable = "Fresher Party Entries Detail";
     const currentDate = new Date().toLocaleDateString();
     const currentTime = new Date().toLocaleTimeString();
     const rows = [
-        [headingInTable],
-        [`Date: ${currentDate}` , `Time: ${currentTime}`],
-        [],
-        ["Roll", "Name", "Status"]
+      [headingInTable],
+      [`Date: ${currentDate}`, `Time: ${currentTime}`],
+      [],
+      ["Roll", "Name", "Status"],
     ];
 
-    // fil table rows 
+    // fil table rows
     for (let key in data) {
       const s = data[key];
       rows.push([s.roll, s.name, s.status]);
     }
-    // create excel sheets 
+    // create excel sheets
     const ws = XLSX.utils.aoa_to_sheet(rows);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Entries");
@@ -139,3 +151,55 @@ downloadBtn.addEventListener("click", () => {
     XLSX.writeFile(wb, "FresherParty_Entries.xlsx");
   });
 });
+
+
+// ✅ Re-generate stored QR for a student
+function regenerateQR() {
+  const searchInput = document.getElementById("searchRoll").value.trim().toUpperCase();
+  const qrDiv = document.getElementById("studentRegenQR");
+  qrDiv.innerHTML = "";
+
+  if (searchInput === "") {
+    alert("Please enter Roll number or Code!");
+    return;
+  }
+
+  const entriesRef = db.ref("entries/");
+  entriesRef.once("value").then(snapshot => {
+    if (!snapshot.exists()) {
+      alert("No entries found in database!");
+      return;
+    }
+
+    let found = false;
+    snapshot.forEach(child => {
+      const entry = child.val();
+      if (entry.roll === searchInput || child.key === searchInput) {
+        found = true;
+
+        const QRData = `${entry.roll}_${entry.name}_${entry.code}`;
+
+        qrDiv.innerHTML = "";
+        new QRCode(qrDiv, {
+          text: QRData,
+          width: 180,
+          height: 180,
+        });
+
+        document.getElementById("studentInfo").innerHTML = `
+          <strong>Name:</strong> ${entry.name}<br>
+          <strong>Roll:</strong> ${entry.roll}<br>
+          <strong>Code:</strong> ${entry.code}
+        `;
+
+        qrDiv.style.display= "block";
+    
+
+      }
+    });
+
+    if (!found) {
+      alert("No matching student found!");
+    }
+  });
+}

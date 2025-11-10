@@ -3,27 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <title>Admin Panel - Fresher Party</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="Admin.css" />
   </head>
   <body>
     <section id="panel">
-      <h1>🎉 Fresher Party Admin Dashboard</h1>
+      <h1>🎉 Fresher Party Admin Dashboard 🎉 </h1>
       <br />
       <div class="stats">
-        <p>
-          Total Registered :&emsp; <span id="total">0</span>
-        </p>
-        <p>Entered (Scanned) :&emsp;  <span id="entered">0</span></p>
-        <p>
-          Not Entered :&emsp; <span id="notEntered">0</span>
-        </p>
+        <p>Total Registered :&emsp; <span id="total">0</span></p>
+        <p>Entered (Scanned) :&emsp; <span id="entered">0</span></p>
+        <p>Not Entered :&emsp; <span id="notEntered">0</span></p>
+      </div>
+      <br />
+
+      <button id="genQr">⚙️ Generate QR</button>
+
+      <div id="show-Gen-qr" style="display: none; text-align: center; margin-top: 20px">
+        <h3>Re-generate Student QR</h3>
+        <input
+          type="text"
+          id="searchRoll"
+          placeholder="Enter Enrollment "
+        />
+        <button onclick="regenerateQR()">Find & Generate QR</button>
+        <div id="studentInfo" style="text-align: center; margin-top: 10px"></div>
+        <div id="studentRegenQR" style="margin-top: 15px"></div>
+        <br>
       </div>
 
-      <br />
+      <br>
       <button id="resetBtn">🔁 Reset All Entries</button>
       <button id="downloadExcel">📥 Download Excel Backup</button>
 

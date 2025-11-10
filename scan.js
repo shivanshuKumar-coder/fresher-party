@@ -19,7 +19,7 @@ console.log("hii i am working");
 
 // audio play features if the scanned as successfully or error 
 function playScannerBeep() {
-  const audio = new Audio('Audio/scanner-beep.mp3'); // ✅ You can use any short mp3 file
+  const audio = new Audio('Audio/scanner-beep.mp3'); 
   audio.play().catch(err => console.error('Sound play error:', err));
 }
 
@@ -36,45 +36,65 @@ function playSound(type) {
   } 
 }
 
+let speechEnabled = false;
+
+function enableSpeechAccess() {
+  if (speechEnabled) return;
+  speechEnabled = true;
+
+  try {
+    const silentAudio = new Audio();
+    silentAudio.src =
+      "data:audio/mp3;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQCAAAACAAACpgCDAAABAgAOgAABAAACABAAZGF0YQAAAAA=";
+    silentAudio.volume = 0;
+    silentAudio.play().catch(() => {});
+
+    const testSpeech = new SpeechSynthesisUtterance(" ");
+    testSpeech.volume = 0;
+    window.speechSynthesis.speak(testSpeech);
+
+    console.log("✅ Speech synthesis unlocked for mobile/desktop!");
+  } catch (err) {
+    console.warn("Speech enable error:", err);
+  }
+}
+
+document.addEventListener("click", enableSpeechAccess, { once: true });
+document.addEventListener("touchstart", enableSpeechAccess, { once: true });
 
 // speak name of the students
 function speakName(name) {
   if (!("speechSynthesis" in window)) return;
 
-  const speech = new SpeechSynthesisUtterance();
-  
-  // Try to pronounce better with "Entry verified for" context
-  speech.text = `${name}.`;
-  
-  // Set rate and pitch for clarity
-  speech.rate = 0.9;
-  speech.pitch = 0.9;
-  speech.volume = 1;
-  
-  // Detect and assign a good voice dynamically
-  const voices = window.speechSynthesis.getVoices();
-  
-  // Try for Indian or Hindi accent
-  const indianVoice =  
-    voices.find(v => v.name.includes("India")) ||
-    voices.find(v => v.lang === "uk-IN") ||
-    voices.find(v => v.name.includes("Google हिन्दी")) ||
-    voices.find(v => v.name.includes("Heera")) ||
-    voices.find(v => v.name.includes("Ravi"));
+  const speak = () => {
+    const speech = new SpeechSynthesisUtterance(`Welcome to the party ${name}`);
+    speech.rate = 0.9;
+    speech.pitch = 0.9;
+    speech.volume = 1;
 
-  if (indianVoice) {
-    speech.voice = indianVoice;
-    speech.lang = indianVoice.lang;
-  } else {
-    // Fallback to English India or normal English
-    speech.lang = "en-IN";
-  }
+    const voices = window.speechSynthesis.getVoices();
+    const indianVoice =  
+      voices.find(v => v.name.includes("India")) ||
+      voices.find(v => v.lang === "uk-IN") ||
+      voices.find(v => v.name.includes("Google हिन्दी")) ||
+      voices.find(v => v.name.includes("Heera")) ||
+      voices.find(v => v.name.includes("Ravi"));
 
-  // Wait until voices are loaded before speaking
-  if (voices.length === 0) {
-    window.speechSynthesis.onvoiceschanged = () => speakName(name);
-  } else {
+    if (indianVoice) {
+      speech.voice = indianVoice;
+      speech.lang = indianVoice.lang;
+    } else {
+      speech.lang = "en-IN";
+    }
+
     window.speechSynthesis.speak(speech);
+  };
+
+  // Retry until voices are loaded
+  if (window.speechSynthesis.getVoices().length === 0) {
+    window.speechSynthesis.onvoiceschanged = speak;
+  } else {
+    speak();
   }
 }
 
@@ -85,12 +105,12 @@ function startScanner() {
 
   // const qrBoxSize = Math.min(window.innerWidth * 0.8, 350);
   html5QrCode
-    .start(
-      { facingMode: "environment" },
-      { fps: 10, qrbox: { width: 270, height: 270 } },
-      (decodedText) => {
-        html5QrCode.stop();
-        playScannerBeep(); // this will play the scanner beep 
+  .start(
+    { facingMode: "environment" },
+    { fps: 10, qrbox: { width: 270, height: 270 } },
+    (decodedText) => {
+      html5QrCode.stop();
+      playScannerBeep(); // this will play the scanner beep 
         verifyQRCode(decodedText);
       },
       (errorMessage) => {
@@ -128,14 +148,13 @@ function verifyQRCode(qrData) {
 
         if (data.status === "scanned") {
           playSound("error");
-          speakName(`Already marked as scanned for ${data.name}`);
           resultDiv.innerHTML = `Already marked as scanned for <b>${data.name}</b>`;
           resultDiv.style.background = "rgba(255, 193, 7, 0.2)";
         } else {
           ref.update({ status: "scanned" });
           playSound("success");
-          speakName(`Access granted to ${data.name}`);
           resultDiv.innerHTML = `Entry verified for <b>${data.name}</b> (${data.roll})`;
+          speakName(`${data.name}`);
           resultDiv.style.background = "rgba(0, 255, 128, 0.2)";
           resultDiv.classList.add("fade-in");
         }

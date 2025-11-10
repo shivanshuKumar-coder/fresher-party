@@ -11,11 +11,9 @@ body {
   padding: 20px;
 }
 
-
 h1 {
   color: #00ffcc;
 }
-
 
 .stats {
   margin: 20px auto;
@@ -47,7 +45,8 @@ td {
 }
 
 #downloadExcel,
-#resetBtn{
+#resetBtn,
+#genQr {
   background: #00ffcc;
   border: none;
   color: black;
@@ -57,7 +56,74 @@ td {
   margin-bottom: 20px;
   font-weight: bold;
 }
-#downloadExcel:hover , 
+#downloadExcel:hover,
 #resetBtn:hover {
   background: #00ffaa;
+}
+
+#show-Gen-qr {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 15px;
+  background: #b92b27; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #1565c0,
+    #b92b27
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #1565c0,
+    #b92b27
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid grey;
+  border-radius: 25px;
+  /* font-size: 25px; */
+}
+#show-Gen-qr input {
+  margin-top: 15px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px 16px 8px 16px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+input::placeholder {
+  color: rgb(234, 236, 238);
+}
+
+#show-Gen-qr button {
+  align-self: center;
+  width: 50%;
+  background: #e9630f;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+#studentRegenQR {
+  display: none;
+  width: fit-content;
+  border: 3px solid rgb(239, 234, 234);
+  justify-content: center;
+  margin: 12px auto;
+}
+
+@media (max-width: 362px){
+  #show-Gen-qr{
+    font-size: 1.5rem;
+  }
 }
