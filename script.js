@@ -51,7 +51,7 @@ function verifyStudent(event) {
   const rollInput = document.getElementById("studentRoll");
   const nameInput = document.getElementById("studentName");
   const roll = rollInput.value.trim().toUpperCase();
-  const name = nameInput.value.trim();
+  const name = nameInput.value.trim().replace(/\s+/g, " ").toUpperCase();
 
   const result = document.getElementById("result");
   const qrDiv = document.getElementById("qrcode");
@@ -67,102 +67,98 @@ function verifyStudent(event) {
   if (roll === "" || name === "") {
     loader.style.display = "none";
     loaderText.style.display = "none";
-    result.innerHTML = "Please enter both Enrollment and Name.";
+    result.innerHTML = "⚠️ Please enter both Enrollment and Name.";
     return;
   }
 
-  const ref = db.ref("students/" + roll);
-  ref
+  const studentRef = db.ref("students/" + roll);
+  studentRef
     .get()
     .then((snapshot) => {
-      if (snapshot.exists()) {
-        const data = snapshot.val();
+      loader.style.display = "none";
+      loaderText.style.display = "none";
 
-        if (data.name.toLowerCase() === name.toLowerCase()) {
-          const entriesFolder = db.ref("entries/");
-          entriesFolder
-            .orderByChild("roll")
-            .equalTo(roll)
-            .once("value", (snapshot) => {
-              loader.style.display = "none";
-              loaderText.style.display = "none";
-
-              if (snapshot.exists()) {
-                const alreadyExist = Object.values(snapshot.val())[0];
-                const audio = new Audio("Audio/error.mp3");
-                audio.play();
-                result.innerHTML =
-                  "QR already generated for: " + alreadyExist.name;
-              } else {
-                const uniqueCode = Math.random()
-                  .toString(36)
-                  .substring(2, 8)
-                  .toUpperCase();
-                const QRData = `${roll}_${data.name}_${uniqueCode}`;
-
-                db.ref("entries/" + uniqueCode)
-                  .set({
-                    name: data.name,
-                    roll: roll,
-                    code: uniqueCode,
-                    status: "not scanned",
-                  })
-                  .then(() => {
-                    loader.style.display = "none";
-                    loaderText.style.display = "none";
-                    result.style.display = "none";
-
-                    qrDiv.style.display = "block";
-                    qrDiv.innerHTML = "";
-                    new QRCode(qrDiv, {
-                      text: QRData,
-                      width: 200,
-                      height: 200,
-                    });
-
-                    celebrateQR();
-                    downloadBtn.style.display = "inline-block";
-                    qrDiv.scrollIntoView({ behavior: "smooth" });
-
-                    // ✅ Attach JPG Download
-                    setupQRDownload(downloadBtn, name);
-                  })
-                  .catch((error) => {
-                    loader.style.display = "none";
-                    loaderText.style.display = "none";
-                    const audio = new Audio("Audio/error.mp3");
-                    audio.play();
-                    result.innerHTML =
-                      "Error saving the QR to Firebase: " + error;
-                  });
-              }
-            });
-        } else {
-          loader.style.display = "none";
-          loaderText.style.display = "none";
-          const audio = new Audio("Audio/error.mp3");
-          audio.play();
-          result.innerHTML = "Name not matched with our database.";
-        }
-      } else {
-        loader.style.display = "none";
-        loaderText.style.display = "none";
-        const audio = new Audio("Audio/error.mp3");
-        audio.play();
-        result.innerHTML = "Enrollment not matched with our database.";
+      if (!snapshot.exists()) {
+        playError();
+        result.innerHTML = "❌ Enrollment not matched with our database.";
+        return;
       }
+
+      const data = snapshot.val();
+      const dbName = data.name.trim().replace(/\s+/g, " ").toUpperCase();
+
+      if (dbName !== name) {
+        playError();
+        result.innerHTML = "❌ Name not matched with our database.";
+        return;
+      }
+
+      const entriesFolder = db.ref("entries/");
+      entriesFolder
+        .orderByChild("roll")
+        .equalTo(roll)
+        .once("value", (snap) => {
+          if (snap.exists()) {
+            playError();
+            const alreadyExist = Object.values(snap.val())[0];
+            result.innerHTML = "⚠️ QR already generated for: " + alreadyExist.name;
+            return;
+          }
+
+          const uniqueCode = Math.random()
+            .toString(36)
+            .substring(2, 8)
+            .toUpperCase();
+
+          const QRData = `${roll}_${data.name}_${uniqueCode}`;
+
+          db.ref("entries/" + uniqueCode)
+            .set({
+              name: data.name,
+              roll: roll,
+              code: uniqueCode,
+              status: "not scanned",
+            })
+            .then(() => {
+              result.style.display = "none";
+              qrDiv.style.display = "block";
+              qrDiv.innerHTML = "";
+
+              new QRCode(qrDiv, {
+                text: QRData,
+                width: 200, // higher quality
+                height: 200,
+              });
+
+              celebrateQR();
+              downloadBtn.style.display = "inline-block";
+              qrDiv.scrollIntoView({ behavior: "smooth" });
+
+              // ✅ JPG download setup
+              setupQRDownload(downloadBtn, name);
+            })
+            .catch((error) => {
+              playError();
+              result.innerHTML = "Error saving the QR to Firebase: " + error;
+            });
+        });
     })
     .catch((error) => {
       loader.style.display = "none";
       loaderText.style.display = "none";
-      const audio = new Audio("Audio/error.mp3");
-      audio.play();
-      result.innerHTML = "Error verifying student.";
+      playError();
+      result.innerHTML = "⚠️ Error verifying student.";
       console.error(error);
     });
 }
 
-// ✅ Mobile + Desktop Compatible JPG QR Download with Header Banner & Name
+// 🔊 Error sound function for cleaner code
+function playError() {
+  const audio = new Audio("Audio/error.mp3");
+  audio.play();
+}
+
+
 // ✅ Mobile + Desktop Compatible JPG QR Download with Banner & Student Name
 function setupQRDownload(downloadBtn, studentName) {
   downloadBtn.onclick = async () => {
