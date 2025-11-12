@@ -153,6 +153,101 @@ downloadBtn.addEventListener("click", () => {
 });
 
 
+function setupQRDownload(downloadBtn, studentName) {
+  downloadBtn.onclick = async () => {
+    const qrContainer = document.getElementById("studentRegenQR");
+    const canvas =
+      qrContainer.querySelector("canvas") || qrContainer.querySelector("img");
+
+    if (!canvas) {
+      alert("QR code not found!");
+      return;
+    }
+
+    const finalCanvas = document.createElement("canvas");
+    const ctx = finalCanvas.getContext("2d");
+    const qrSize = 400; // higher resolution for better clarity
+    const padding = 50;
+    const bannerHeight = 80;
+    const nameGap = 80;
+
+    finalCanvas.width = qrSize + padding * 2;
+    finalCanvas.height = bannerHeight + qrSize + nameGap + padding;
+
+    // White background
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
+
+    // Banner with gradient
+    const gradient = ctx.createLinearGradient(0, 0, finalCanvas.width, 0);
+    gradient.addColorStop(0, "#FF5733");
+    gradient.addColorStop(1, "#C70039");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, finalCanvas.width, bannerHeight);
+
+    // Banner text
+    ctx.fillStyle = "white";
+    ctx.font = "bold 36px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("Fresher Party 2025", finalCanvas.width / 2, bannerHeight / 2);
+
+    // Draw QR
+    function drawQR(imgSrc) {
+      const img = new Image();
+      img.src = imgSrc;
+      img.onload = () => {
+        ctx.drawImage(img, padding, bannerHeight + 10, qrSize, qrSize);
+        drawName();
+      };
+    }
+
+    if (canvas.tagName.toLowerCase() === "canvas") {
+      drawQR(canvas.toDataURL("image/png"));
+    } else {
+      drawQR(canvas.src);
+    }
+
+    function drawName() {
+      ctx.fillStyle = "#000";
+      ctx.font = "bold 28px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText(
+        studentName,
+        finalCanvas.width / 2,
+        bannerHeight + qrSize + 55
+      );
+
+      finalCanvas.toBlob((blob) => {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+        if (isIOS) {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+          showToast("📱 Tap and hold image to save your QR code");
+        } else {
+          const a = document.createElement("a");
+          const url = URL.createObjectURL(blob);
+          a.href = url;
+          a.download = `${studentName}_QR.jpg`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          showToast("✅ QR Code Downloaded!");
+        }
+
+        const msg = new SpeechSynthesisUtterance(
+          "QR code downloaded successfully"
+        );
+        window.speechSynthesis.speak(msg);
+      }, "image/jpeg", 1.0);
+    }
+  };
+}
+
+
+
 // ✅ Re-generate stored QR for a student
 function regenerateQR() {
   const searchInput = document.getElementById("searchRoll").value.trim().toUpperCase();
@@ -182,8 +277,8 @@ function regenerateQR() {
         qrDiv.innerHTML = "";
         new QRCode(qrDiv, {
           text: QRData,
-          width: 180,
-          height: 180,
+          width: 200,
+          height: 200,
         });
 
         document.getElementById("studentInfo").innerHTML = `
@@ -193,7 +288,10 @@ function regenerateQR() {
         `;
 
         qrDiv.style.display= "block";
-    
+
+        const downloadBtn = document.getElementById("downloadOldQR");
+        downloadBtn.style.display = "inline-block";
+        setupQRDownload(downloadBtn,entry.name);
 
       }
     });

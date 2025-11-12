@@ -46,7 +46,8 @@ td {
 
 #downloadExcel,
 #resetBtn,
-#genQr {
+#genQr,
+#downloadOldQR {
   background: #00ffcc;
   border: none;
   color: black;
@@ -60,6 +61,8 @@ td {
 #resetBtn:hover {
   background: #00ffaa;
 }
+
+
 
 #show-Gen-qr {
   width: fit-content;
@@ -120,6 +123,17 @@ input::placeholder {
   border: 3px solid rgb(239, 234, 234);
   justify-content: center;
   margin: 12px auto;
+}
+
+#downloadOldQR {
+  background: #2374bf;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 @media (max-width: 362px){
