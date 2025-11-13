@@ -82,3 +82,46 @@ function deleteStudentEntry(uniqueCode) {
       alert("Error deleting entry: " + error);
     });
 }
+
+
+
+function addStudent() {
+  const name = document.getElementById("studentName").value.trim().toUpperCase();
+  const roll = document.getElementById("studentRoll").value.trim().toUpperCase();
+  const status = document.getElementById("addStatus");
+
+  if (!name || !roll) {
+    status.style.color = "orange";
+    status.textContent = "⚠️ Please enter both Name and Roll Number!";
+    return;
+  }
+
+  const ref = db.ref("students/" + roll);
+  ref.get()
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        status.style.color = "red";
+        status.textContent = "❌ Student already exists in the database!";
+      } else {
+        db.ref("students/" + roll)
+          .set({
+            name: name,
+            roll: roll,
+          })
+          .then(() => {
+            status.style.color = "lime";
+            status.textContent = `✅ ${name} added successfully! `;
+            document.getElementById("studentName").value = "";
+            document.getElementById("studentRoll").value = "";
+          })
+          .catch((error) => {
+            status.style.color = "red";
+            status.textContent = "⚠️ Error adding student: " + error.message;
+          });
+      }
+    })
+    .catch((error) => {
+      status.style.color = "red";
+      status.textContent = "⚠️ Error verifying database: " + error.message;
+    });
+}
