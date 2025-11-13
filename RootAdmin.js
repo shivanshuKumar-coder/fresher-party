@@ -125,3 +125,41 @@ function addStudent() {
       status.textContent = "⚠️ Error verifying database: " + error.message;
     });
 }
+
+
+// ❌ Delete student
+function deleteStudent() {
+  const roll = document.getElementById("deleteRoll").value.trim().toUpperCase();
+  const status = document.getElementById("deleteStatus");
+
+  if (!roll) {
+    status.style.color = "orange";
+    status.textContent = "⚠️ Please enter a roll number!";
+    return;
+  }
+
+  const ref = db.ref("students/" + roll);
+  ref.get()
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        db.ref("students/" + roll)
+          .remove()
+          .then(() => {
+            status.style.color = "lime";
+            status.textContent = `✅ Student with roll ${roll} deleted successfully.`;
+            document.getElementById("deleteRoll").value = "";
+          })
+          .catch((error) => {
+            status.style.color = "red";
+            status.textContent = "⚠️ Error deleting record: " + error.message;
+          });
+      } else {
+        status.style.color = "red";
+        status.textContent = "❌ Student not found in database.";
+      }
+    })
+    .catch((error) => {
+      status.style.color = "red";
+      status.textContent = "⚠️ Error checking record: " + error.message;
+    });
+}
